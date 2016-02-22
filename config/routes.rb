@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   get 'about'     => 'static_pages#about'
   get 'contact'   => 'static_pages#contact'
   resources :users
+  resources :microposts, only: [:create, :destroy]
 
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
