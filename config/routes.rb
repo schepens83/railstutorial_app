@@ -10,9 +10,13 @@ Rails.application.routes.draw do
   get 'help'      => 'static_pages#help'
   get 'about'     => 'static_pages#about'
   get 'contact'   => 'static_pages#contact'
-  resources :users
+  resources :users do 
+    member do
+      get :following, :followers
+    end
+  end
   resources :microposts, only: [:create, :destroy]
-
+  resources :relationships, only: [:create, :destroy]
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
